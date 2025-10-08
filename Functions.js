@@ -21,7 +21,7 @@ const square = (x) => x * x;
 // 3️⃣ Hoisting
 // Arrow Functions ❌ not hoisted
 // Normal Functions ✅ hoisted
-sayHi(); // Works
+// sayHi(); // Works
 function sayHi() {
   console.log("Hello Buddy!");
 }
@@ -38,7 +38,7 @@ const obj = {
     console.log(`Name: ${this.name}, Marks: ${this.marks}`);
   },
 };
-obj.info(); // Name: Ron, Marks: 76
+// obj.info(); // Name: Ron, Marks: 76
 
 // ----------------------
 
@@ -46,3 +46,37 @@ obj.info(); // Name: Ron, Marks: 76
 // Arrow Functions ❌ can't be constructors
 // const Person = (name) => { this.name = name }; ❌
 // const user = new Person("John"); // Error
+
+// ----------------------
+
+// 6️⃣ Higher-Order Functions
+// Definition: A callback function is a function passed as an argument to another function,
+// which will be called later (either immediately or after some event).
+
+// 🧩 Example 1: Taking a function as argument
+function greetUser(name, callBcak) {
+  console.log(`Hello ${name}!`);
+  callBcak();
+}
+
+myBuddy = () => {
+  console.log("You got it right!");
+};
+
+// greetUser("Ashish", myBuddy);
+
+// 🧠 Flow:
+// `greetUser` takes name and callback.
+// It prints "Hello, Ginny".
+// Then it calls callback() → runs sayBye().
+
+// 🧩 Example 2: Returning a function
+function multiplier(factor) {
+  return (num) => num * factor;
+}
+
+const triple = multiplier(3);
+const double = multiplier(2);
+// console.log(double(10)); // 20
+// 🧠 multiplier is a Higher-Order Function because it returns another function.
+
